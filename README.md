@@ -30,7 +30,7 @@ npm install
 
 Please check the [known issues](#known-issues) before your start.
 
-1. Connect you're device (make sure it can be listed).
+1. Connect your device (make sure it can be listed).
     - `frida-ls-devices`
 2. Copy an example script to the scripts folder.
     - `cp examples/modify_function_argument.js scripts/modify_function_argument.js`
