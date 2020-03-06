@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/NorthwaveNL/fridax/master/.github/logo.svg?sanitize=true" width="475" />
+    <img src="https://raw.githubusercontent.com/NorthwaveNL/fridax/master/.github/logo_text.svg?sanitize=true" width="475" />
     <br/>
     <b>Fridax is a Node package for dealing with <a href="https://dotnet.microsoft.com/apps/xamarin">Xamarin</a> applications while using the <a href="https://frida.re/docs/javascript-api/">Frida API</a>.</b>
     <br/>
