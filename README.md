@@ -34,7 +34,7 @@ Please check the [known issues](#known-issues) before your start.
     - `frida-ls-devices`
 2. Copy an example script to the scripts folder.
     - `cp examples/modify_function_argument.js scripts/modify_function_argument.js`
-3. Adjust some of the settings in the script to your needs.
+3. Adjust some of the config variables in the script (that you copied) to your needs.
     - Update `settingClassName`, `settingMethodName` and `settingMethodArgCount`
 4. Run the hello world script!
     - `node fridax.js inject --scripts hello_world`
