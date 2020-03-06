@@ -48,8 +48,8 @@ Please check the [known issues](#issues) before your start.
     - `cp examples/modify_function_argument.js scripts/modify_function_argument.js`
 3. Adjust some of the config variables in the script (that you copied) to your needs.
     - Update `settingClassName`, `settingMethodName` and `settingMethodArgCount`
-4. Run the hello world script!
-    - `node fridax.js inject --scripts hello_world`
+4. Start the application on your device and run your script!
+    - `node fridax.js inject --scripts modify_function_argument`
 
 **All options**
 
