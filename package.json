@@ -1,0 +1,21 @@
+{
+  "name": "fridax",
+  "version": "1.0.0",
+  "description": "Frida Xamarin Hooking",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NorthwaveNL/fridax.git"
+  },
+  "main": "hack.js",
+  "dependencies": {
+    "console-stamp": "^0.2.9",
+    "frida-inject": "^0.3.0",
+    "frida-mono-api": "git+https://github.com/freehuntx/frida-mono-api.git",
+    "inquirer": "^7.0.4",
+    "node-persist": "^3.0.5",
+    "yargs": "^15.1.0"
+  },
+  "devDependencies": {},
+  "author": "Tijme Gommers",
+  "license": "MIT"
+}
