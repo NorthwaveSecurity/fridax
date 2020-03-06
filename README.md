@@ -37,15 +37,15 @@ Please check the [known issues](#known-issues) before your start.
 3. Adjust some of the settings in the script to your needs.
     - Update `settingClassName`, `settingMethodName` and `settingMethodArgCount`
 4. Run the hello world script!
-    - `node hack.js inject --scripts hello_world`
+    - `node fridax.js inject --scripts hello_world`
 
 **All options**
 
 ```bash
-node hack.js <command>
+node fridax.js <command>
 
 Commands:
-  node hack.js inject [scripts]  Inject the given scripts list.
+  node fridax.js inject [scripts]  Inject the given scripts list.
 
 Options:
   --version   Show version number                                                           [boolean]
@@ -53,7 +53,7 @@ Options:
   --device    The address of the remote Frida device to connect to (or the string "usb")    [default: "usb"]
 
 Examples:
-  node hack.js inject --scripts modify_function_argument intercept_password sql_injection
+  node fridax.js inject --scripts modify_function_argument intercept_password sql_injection
 ```
 
 ## Examples

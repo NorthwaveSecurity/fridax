@@ -1,5 +1,5 @@
 /**
- * You shouldn not change this file.
+ * You should not change this file.
  * Please consult the `README.md` file for usage details.
  */
 
@@ -11,7 +11,7 @@ const fridaInject = require('frida-inject')
 
 // Available arguments
 let argv = require('yargs')
-    .scriptName('node hack.js')
+    .scriptName('node fridax.js')
     .wrap(320)
     .help('h').alias('h', 'help')
     .option('device', { default: 'usb', description: 'The address of the remote Frida device to connect to (or the string "usb")'})
