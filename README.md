@@ -28,7 +28,7 @@ npm install
 
 ## Usage
 
-Please check the [known issues](#known-issues) before your start.
+Please check the [known issues](#issues) before your start.
 
 1. Connect your device (make sure it can be listed).
     - `frida-ls-devices`
