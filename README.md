@@ -22,7 +22,7 @@
 
 ## Goal
 
-In the Northwave Red Team we conduct security penetration tests on mobile applications. During almost every mobile application penetration test we want to modify the behaviour of the application in such a way that it bypasses certain checks (e.g. the PIN code screen).
+In the Northwave Red Team we conduct security penetration tests on, among other things, mobile applications. During almost every mobile application penetration test we want to modify the behaviour of the application in such a way that it bypasses certain checks (e.g. a PIN code check).
 
 Frida is a toolkit that allows us to do exactly that. It is a dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers. Using Frida you can, for example, inject and modify code of iOS and Android applications on runtime. However, if the application that is being pentested is a Xamarin application, it becomes more difficult to modify code on runtime, since Xamarin applications are basically wrappers that run a .NET binary.
 
