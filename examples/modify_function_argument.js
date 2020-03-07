@@ -2,7 +2,7 @@ import { MonoApiHelper, MonoApi } from 'frida-mono-api'
 
 /* 
     This example script can intercept the following method (constructor).
-    Furthermore it modifies the third argument (string c).
+    Furthermore it modifies the first argument (string id).
 
     namespace CompanyName.ProjectName.Views.Web.Html {
 
