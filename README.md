@@ -26,7 +26,7 @@ In the Northwave Red Team we conduct security penetration tests on, among other 
 
 Frida is a toolkit that allows us to do exactly that. It is a dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers. Using Frida you can, for example, inject and modify code of iOS and Android applications on runtime. However, if the application that is being pentested is a Xamarin application, it becomes more difficult to modify code on runtime, since Xamarin applications are basically wrappers that run a .NET binary.
 
-**Fridax to the rescue!**. Fridax allows you to easily modify the .NET binary inside a Xamarin application on runtime. We've included some example scripts that e.g. modify constructor or function arguments.
+**Fridax to the rescue!** Fridax allows you to easily modify the .NET binary inside a Xamarin application on runtime. We've included some example scripts that e.g. modify constructor or function arguments.
 
 Happy hacking!
 
