@@ -26,7 +26,7 @@ In the Northwave Red Team we conduct security penetration tests on, among other 
 
 Frida is a toolkit that allows us to do exactly that. It is a dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers. Using Frida you can, for example, inject and modify code of iOS and Android applications on runtime. However, if the application that is being pentested is a Xamarin application, it becomes more difficult to modify code on runtime, since Xamarin applications are basically wrappers that run a .NET binary.
 
-**Fridax to the rescue!**. Fridax allows you to easily modify the .NET binary inside a Xamarin application on runtime. We've included some example scripts that e.g. modify constructor or function arguments.
+**Fridax to the rescue!** Fridax allows you to easily modify the .NET binary inside a Xamarin application on runtime. We've included some example scripts that e.g. modify constructor and function arguments.
 
 Happy hacking!
 
@@ -45,11 +45,11 @@ Please check the [known issues](#issues) before your start.
 1. Connect your device (make sure it can be listed).
     - `frida-ls-devices`
 2. Copy an example script to the scripts folder.
-    - `cp examples/modify_function_argument.js scripts/modify_function_argument.js`
+    - `cp examples/modify_class_function_argument.js scripts/modify_class_function_argument.js`
 3. Adjust some of the config variables in the script (that you copied) to your needs.
     - Update `settingClassName`, `settingMethodName` and `settingMethodArgCount`
-4. Run the hello world script!
-    - `node fridax.js inject --scripts hello_world`
+4. Start the application on your device and run your script!
+    - `node fridax.js inject --scripts modify_class_function_argument`
 
 **All options**
 
