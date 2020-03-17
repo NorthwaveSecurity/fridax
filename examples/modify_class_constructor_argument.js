@@ -1,18 +1,17 @@
 import { MonoApiHelper, MonoApi } from 'frida-mono-api'
+import ClassHelper from '../libraries/class_helper'
 
 /* 
-    This example script can intercept the following method (constructor).
-    Furthermore it modifies the third argument (string c).
+    // This example script can intercept the following method (constructor).
+    // Furthermore it modifies the third argument (string c).
 
     namespace CompanyName.ProjectName.Views.Web.Html {
 
         class HtmlWebView {
 
             HtmlWebView(string a, string b, string c) {
-                // This constructor function is intercepted.
+                // This constructor will be intercepted.
             }
-
-            ...
 
         }
 
@@ -24,26 +23,11 @@ var settingClassName = "CompanyName.ProjectName.Views.Web.Html.HtmlWebView";
 var settingMethodName = ".ctor";
 var settingMethodArgCount = 3;
 
-// Get a Xamarin class by its identifier and name (e.g. 'Your.App.Controllers.UserController')
-function getClass(name) {
-    var result = 0;
-
-    MonoApiHelper.AssemblyForeach(function(assemb) {
-        var image = MonoApi.mono_assembly_get_image(assemb);
-        var pointer = MonoApiHelper.ClassFromName(image, name);
-        if (pointer != 0) {
-            result = pointer;
-        }
-    });
-
-    return result;
-}
-
 // The root AppDomain is the initial domain created by the runtime when it is initialized. Programs execute on this AppDomain.
 const domain = MonoApi.mono_get_root_domain()
 
 // Get a reference to a certain class within the Xamarin application.
-var classInformation = getClass(settingClassName);
+var classInformation = ClassHelper.getClassByName(settingClassName);
 
 // Get the pointer to the ahead-of-time (AOT) compiled method
 let methodInformation = MonoApiHelper.ClassGetMethodFromName(classInformation, settingMethodName, settingMethodArgCount)
