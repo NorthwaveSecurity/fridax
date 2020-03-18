@@ -70,7 +70,37 @@ Examples:
 
 ## Examples
 
-Example scripts can be found in `./examples`. Place an example script in the `./scripts` folder to try it out.
+Example scripts can be found in `./examples`. Place an example script in the `./scripts` folder to try it out. Using the example scripts, all of the variables/functions in the example class below can be read/intercepted.
+
+    namespace CompanyName.ProjectName {
+
+        class Settings {
+
+            // Static int can be read
+            public static readonly int secret1 = 1234;
+
+            // Static bool can be read
+            public static readonly bool secret2 = false;
+
+            // Static object can be read
+            public static readonly ObfuscatedString secret3 = ObfuscatedString("yGVhqI5yzbgYUnCP+ZukDw==");
+
+            // Static string can be read
+            public static readonly string secret4 = "SecretValue";
+
+            // Constructor can be intercepted and arguments can be modified
+            Settings(string a, string b, string c) {
+
+            }
+
+            // Function can be intercepted and argument can be modified
+            GetElement(string id) {
+
+            }
+
+        }
+
+    }
 
 ## Issues
 
