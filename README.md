@@ -103,7 +103,7 @@ namespace CompanyName.ProjectName {
 
 }
 ```
-For example, to read the `public static readonly bool secret2` you can run the command below after copying `./examples/read_static_bool_from_class.js` to `./scripts/read_static_bool_from_class.js`. You also need to edit the `Company.ProjectName.Settings` class name and `secret2` variable name to your needs. You can find out which names you need by using [dnSpy](https://github.com/0xd4d/dnSpy).
+For example, to read the `public static readonly bool secret2` you can run the command below after copying `./examples/read_static_bool_from_class.js` to `./scripts/read_static_bool_from_class.js`. You also need to edit the `Company.ProjectName.Settings` class name and `secret2` variable name in that file to your needs. You can find out which names you need by using [dnSpy](https://github.com/0xd4d/dnSpy) on the Mono binary in the IPA/APK.
 
 ```bash
 node fridax.js inject --scripts read_static_bool_from_class
