@@ -72,36 +72,43 @@ Examples:
 
 Example scripts can be found in `./examples`. Place an example script in the `./scripts` folder to try it out. Using the example scripts, all of the variables/functions in the example class below can be read/intercepted.
 
-    namespace CompanyName.ProjectName {
+```javascript
+namespace CompanyName.ProjectName {
 
-        class Settings {
+    class Settings {
 
-            // Static int can be read
-            public static readonly int secret1 = 1234;
+        // Static int can be read
+        public static readonly int secret1 = 1234;
 
-            // Static bool can be read
-            public static readonly bool secret2 = false;
+        // Static bool can be read
+        public static readonly bool secret2 = false;
 
-            // Static object can be read
-            public static readonly ObfuscatedString secret3 = ObfuscatedString("yGVhqI5yzbgYUnCP+ZukDw==");
+        // Static object can be read
+        public static readonly ObfuscatedString secret3 = ObfuscatedString("yGVhqI5yzbgYUnCP+ZukDw==");
 
-            // Static string can be read
-            public static readonly string secret4 = "SecretValue";
+        // Static string can be read
+        public static readonly string secret4 = "SecretValue";
 
-            // Constructor can be intercepted and arguments can be modified
-            Settings(string a, string b, string c) {
+        // Constructor can be intercepted and arguments can be modified
+        Settings(string a, string b, string c) {
 
-            }
+        }
 
-            // Function can be intercepted and argument can be modified
-            GetElement(string id) {
-
-            }
+        // Function can be intercepted and argument can be modified
+        GetElement(string id) {
 
         }
 
     }
 
+}
+```
+For example, to read the `public static readonly bool secret2` you can run the command below after copying `./examples/read_static_bool_from_class.js` to `./scripts/read_static_bool_from_class.js`. You also need to edit the `Company.ProjectName.Settings` class name and `secret2` variable name to your needs. You can find out which names you need by using [dnSpy](https://github.com/0xd4d/dnSpy).
+
+```bash
+node fridax.js inject --scripts read_static_bool_from_class
+```
+    
 ## Issues
 
 Issues or new features can be reported via the [GitHub issue tracker](https://github.com/NorthwaveNL/fridax/issues). Please make sure your issue or feature has not yet been reported by anyone else before submitting a new one.
