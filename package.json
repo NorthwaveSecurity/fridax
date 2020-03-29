@@ -8,6 +8,7 @@
   },
   "main": "hack.js",
   "dependencies": {
+    "chalk": "^3.0.0",
     "console-stamp": "^0.2.9",
     "frida-ex-nativefunction": "^0.1.2",
     "frida-inject": "^0.3.0",

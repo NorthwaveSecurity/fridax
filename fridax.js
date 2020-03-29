@@ -1,3 +1,5 @@
+#!node
+
 /**
  * You should not change this file.
  * Please consult the `README.md` file for usage details.
@@ -5,19 +7,21 @@
 
 // Dependencies
 const fs = require(`fs`)
+const chalk = require(`chalk`)
+const inquirer = require(`inquirer`)
 const storage = require(`node-persist`)
 const frida = require(`frida`)
 const fridaInject = require(`frida-inject`)
 
 // Available arguments
 let argv = require(`yargs`)
-    .scriptName(`node fridax.js`)
+    .scriptName(`./fridax.js`)
     .wrap(280)
     .help(`h`).alias(`h`, `help`)
     .option(`device`, { default: `usb`, description: `The address of the remote Frida device to connect to (or the string "usb")`})
     .command(`inject [scripts]`, `Inject the given scripts list.`, (yargs) => {
         yargs
-            .example(`$0 inject --scripts intercept_username intercept_password sql_injection`)
+            .example(`$0 inject --scripts scripts/intercept_username.js scripts/intercept_password sql_injection.js`)
             .option(`scripts`, {
                 alias: `s`,
                 type: `array`,
@@ -26,7 +30,7 @@ let argv = require(`yargs`)
             .demandOption(`scripts`)
     }, (argv) => {})
     .demandCommand()
-    .example(`$0 inject --scripts intercept_username intercept_password sql_injection`)
+    .example(`$0 inject --scripts scripts/intercept_username.js scripts/intercept_password.js scripts/sql_injection.js`)
     .argv
 
 // The Fridax runtime
@@ -46,7 +50,7 @@ async function main(options) {
     }
 
     if (device == null) {
-        return console.error(`[!] Cannot find device.`)
+        return console.error(chalk.bold.red(`[!] Cannot find device.`))
     }
 
     console.log(`[*] Up and running on ${device.name}.`)
@@ -78,7 +82,7 @@ async function selectApplicationOnDevice(device) {
         }
     }
 
-    let answers = await require(`inquirer`).prompt([
+    let answers = await inquirer.prompt([
         {
             type: `list`,
             name: `application`,
@@ -99,11 +103,11 @@ async function injectApplicationOnDevice(device, application) {
 
     var scripts = [`console.log('[*] Injected a test script (this runs from within the injected application)!')`]
     for (index in argv[`scripts`]) {
-        var file = __dirname + `/scripts/${argv[`scripts`][index]}.js`
+        var file = __dirname + `/${argv[`scripts`][index]}`
         if (fs.existsSync(file)) {
             scripts.push(file)
         } else {
-            console.error(`[!] File '${file}' does not exist.`)
+            console.error(chalk.bold.red(`[!] File '${file}' does not exist.`))
         }
     }
 

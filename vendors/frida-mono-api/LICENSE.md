@@ -1,7 +1,10 @@
 MIT License
 ===========
 
+**Initial codebase**
 Copyright (c) 2018 freehuntx (https://github.com/freehuntx/frida-mono-api/)
+
+**Additions**
 Copyright (c) 2020 Northwave B.V. (www.northwave-security.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

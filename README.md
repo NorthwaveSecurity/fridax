@@ -49,15 +49,15 @@ Please check the [known issues](#issues) before your start.
 3. Adjust some of the config variables in the script (that you copied) to your needs.
     - Update `settingClassName`, `settingMethodName` and `settingMethodArgCount`
 4. Start the application on your device and run your script!
-    - `node fridax.js inject --scripts modify_class_function_argument`
+    - `./fridax.js inject --scripts scripts/modify_class_function_argument.js`
 
 **All options**
 
 ```bash
-node fridax.js <command>
+./fridax.js <command>
 
 Commands:
-  node fridax.js inject [scripts]  Inject the given scripts list.
+  ./fridax.js inject [scripts]  Inject the given scripts list.
 
 Options:
   --version   Show version number                                                           [boolean]
@@ -65,7 +65,7 @@ Options:
   --device    The address of the remote Frida device to connect to (or the string "usb")    [default: "usb"]
 
 Examples:
-  node fridax.js inject --scripts modify_function_argument intercept_password sql_injection
+  ./fridax.js inject --scripts scripts/modify_function_argument.js scripts/intercept_password.js scripts/sql_injection.js
 ```
 
 ## Examples
@@ -106,7 +106,7 @@ namespace CompanyName.ProjectName {
 For example, to read the `public static readonly bool secret2` you can run the command below after copying `./examples/read_static_bool_from_class.js` to `./scripts/read_static_bool_from_class.js`. You also need to edit the `Company.ProjectName.Settings` class name and `secret2` variable name in that file to your needs. You can find out which names you need by using [dnSpy](https://github.com/0xd4d/dnSpy) on the Mono binary in the IPA/APK.
 
 ```bash
-node fridax.js inject --scripts read_static_bool_from_class
+./fridax.js inject --scripts scripts/read_static_bool_from_class.js
 ```
     
 ## Issues
