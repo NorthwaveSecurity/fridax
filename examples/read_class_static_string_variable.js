@@ -16,7 +16,7 @@ import ClassHelper from '../libraries/class_helper'
 */
 
 // Get a reference to the secret string
-let settingsClass = ClassHelper.getClassByName("CompanyName.ProjectName")
+let settingsClass = ClassHelper.getClassByName("CompanyName.ProjectName.Settings")
 let secretField = MonoApiHelper.ClassGetFieldFromName(settingsClass, "secretString")
 let secretValue = MonoApiHelper.FieldGetValueObject(secretField, settingsClass)
 

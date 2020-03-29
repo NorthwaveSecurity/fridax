@@ -9,8 +9,8 @@
   "main": "hack.js",
   "dependencies": {
     "console-stamp": "^0.2.9",
+    "frida-ex-nativefunction": "^0.1.2",
     "frida-inject": "^0.3.0",
-    "frida-mono-api": "git+https://github.com/freehuntx/frida-mono-api.git",
     "inquirer": "^7.1.0",
     "node-persist": "^3.0.5",
     "yargs": "^15.3.1"

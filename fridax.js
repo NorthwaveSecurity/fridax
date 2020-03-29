@@ -42,14 +42,7 @@ async function main(options) {
         device = await deviceManager.addRemoteDevice(argv[`device`]);
     } else {
         console.log(`[*] Awaiting USB device.`)
-        let devices = await deviceManager.enumerateDevices()
-
-        devices.forEach(enumDevice => {
-            if (enumDevice.type == `usb`) {
-                device = enumDevice
-                return
-            }
-        })
+        device = await frida.getUsbDevice()
     }
 
     if (device == null) {
@@ -59,9 +52,10 @@ async function main(options) {
     console.log(`[*] Up and running on ${device.name}.`)
 
     let application = await selectApplicationOnDevice(device)
-    let inject = await injectApplicationOnDevice(device, application)
-
+    
     console.log(`[*] Happy hacking.`)
+
+    let inject = await injectApplicationOnDevice(device, application)
 }
 
 // Give the user the option to choose an application

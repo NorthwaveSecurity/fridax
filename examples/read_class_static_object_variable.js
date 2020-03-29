@@ -16,7 +16,7 @@ import ClassHelper from '../libraries/class_helper'
 */
 
 // Get a reference to ObfuscatedString secret
-let settingsClass = ClassHelper.getClassByName("CompanyName.ProjectName")
+let settingsClass = ClassHelper.getClassByName("CompanyName.ProjectName.Settings")
 let secretField = MonoApiHelper.ClassGetFieldFromName(settingsClass, "secret")
 let secretValue = MonoApiHelper.FieldGetValueObject(secretField, settingsClass)
 
