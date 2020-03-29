@@ -16,7 +16,7 @@ const fridaInject = require(`frida-inject`)
 // Available arguments
 let argv = require(`yargs`)
     .scriptName(`./fridax.js`)
-    .wrap(280)
+    .wrap(320)
     .help(`h`).alias(`h`, `help`)
     .option(`device`, { default: `usb`, description: `The address of the remote Frida device to connect to (or the string "usb")`})
     .command(`inject [scripts]`, `Inject the given scripts list.`, (yargs) => {
