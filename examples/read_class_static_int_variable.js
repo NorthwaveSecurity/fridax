@@ -1,4 +1,4 @@
-import { MonoApiHelper, MonoApi } from 'frida-mono-api'
+import { MonoApiHelper, MonoApi } from '../vendors/frida-mono-api'
 import ClassHelper from '../libraries/class_helper'
 
 /* 
