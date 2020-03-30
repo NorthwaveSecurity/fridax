@@ -32,9 +32,16 @@ Happy hacking!
 
 ## Installation
 
+Clone this Git repository.
+
+```bash
+git clone git@github.com:NorthwaveNL/fridax.git
+```
+
 Use the package manager [npm](https://www.npmjs.com/) to install the dependencies for Fridax.
 
 ```bash
+cd fridax
 npm install
 ```
 
