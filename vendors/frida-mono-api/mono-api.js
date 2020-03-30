@@ -41,6 +41,7 @@ let MonoApi = {
     mono_assembly_open_full: null,
     mono_assembly_set_main: null,
     mono_assembly_setrootdir: null,
+    mono_aot_get_method: ['pointer', ['pointer', 'pointer', 'pointer']],
     mono_backtrace_from_context: null,
     mono_bitset_alloc_size: null,
     mono_bitset_clear: null,
@@ -100,7 +101,7 @@ let MonoApi = {
     mono_class_get_nesting_type: null,
     mono_class_get_parent: ['pointer', ['pointer']],
     mono_class_get_properties: null,
-    mono_class_get_property_from_name: null,
+    mono_class_get_property_from_name: ['pointer', ['pointer', 'pointer']],
     mono_class_get_property_token: null,
     mono_class_get_rank: null,
     mono_class_get_type: ['pointer', ['pointer']],
@@ -247,7 +248,7 @@ let MonoApi = {
     mono_field_get_type: ['pointer', ['pointer']],
     mono_field_get_value: ['void', ['pointer', 'pointer', 'pointer']],
     mono_field_get_value_object: ['pointer', ['pointer', 'pointer', 'pointer']],
-    mono_field_set_value: null,
+    mono_field_set_value: ['void', ['pointer', 'pointer', 'pointer']],
     mono_field_static_get_value: null,
     mono_field_static_set_value: null,
     mono_file_map: null,
@@ -512,7 +513,7 @@ let MonoApi = {
     mono_method_full_name: null,
     mono_method_get_class: null,
     mono_method_get_flags: ['uint', ['pointer', 'uint']],
-    mono_method_get_header: null,
+    mono_method_get_header: ['pointer', ['pointer']],
     mono_method_get_index: null,
     mono_method_get_last_managed: null,
     mono_method_get_marshal_info: null,
@@ -596,13 +597,13 @@ let MonoApi = {
     mono_profiler_load: null,
     mono_profiler_set_events: null,
     mono_property_get_flags: null,
-    mono_property_get_get_method: null,
+    mono_property_get_get_method: ['pointer', ['pointer']],
     mono_property_get_name: null,
     mono_property_get_object: null,
     mono_property_get_parent: null,
-    mono_property_get_set_method: null,
-    mono_property_get_value: null,
-    mono_property_set_value: null,
+    mono_property_get_set_method: ['pointer', ['pointer']],
+    mono_property_get_value: ['pointer', ['pointer', 'pointer', 'pointer', 'pointer']],
+    mono_property_set_value: ['int', ['pointer', 'pointer', 'pointer', 'pointer']],
     mono_ptr_class_get: null,
     mono_raise_exception: null,
     mono_reflection_get_custom_attrs: null,
@@ -790,18 +791,16 @@ let MonoApi = {
 
 Object.keys(MonoApi).map(exportName => {
     if (MonoApi[exportName] === null) {
-        MonoApi[exportName] = () => { throw new Error('Export not implemented: ' + exportName) }
+        MonoApi[exportName] = () => { throw new Error('Export signature missing: ' + exportName) }
     } else {
         const addr = Module.findExportByName(monoModule.name, exportName)
-
-        if (addr == null || addr.isNull()) {
-            MonoApi[exportName] = () => { throw new Error('Export not found: ' + exportName) }
-        } else {
-            MonoApi[exportName] = new ExNativeFunction(addr, ...MonoApi[exportName])
-        }
+        MonoApi[exportName] = !addr
+            ? () => { throw new Error('Export not found: ' + exportName) }
+            : MonoApi[exportName] = new ExNativeFunction(addr, ...MonoApi[exportName])
     }
 })
 
-MonoApi.mono_thread_attach(MonoApi.mono_get_root_domain())
+MonoApi.mono_thread_attach(MonoApi.mono_get_root_domain()) // Make sure we are attached to mono.
+MonoApi.module = monoModule; // Expose the module object.
 
 export default MonoApi

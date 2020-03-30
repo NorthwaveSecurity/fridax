@@ -1,8 +1,21 @@
-let monoModule = Process.findModuleByName('mono.dll')
+const KNOWN_RUNTIMES = ['mono.dll', 'libmonosgen-2.0.so' ];
+const KNOWN_EXPORTS = ['mono_thread_attach'];
 
+let monoModule = null;
+
+// Look for a known runtime module.
+for (let x in KNOWN_RUNTIMES) {
+    let foundModule = Process.findModuleByName(x);
+    if (foundModule) {
+        monoModule = foundModule;
+        break;
+    }
+}
+
+// Look for a known mono export.
 if (!monoModule) {
-  const monoThreadAttach = Module.findExportByName(null, 'mono_thread_attach')
-  if (monoThreadAttach) monoModule = Process.findModuleByAddress(monoThreadAttach)
+    const monoThreadAttach = Module.findExportByName(null, 'mono_thread_attach')
+    if (monoThreadAttach) monoModule = Process.findModuleByAddress(monoThreadAttach)
 }
 
 // Extended support to find the mono library by searching in module exports
@@ -17,6 +30,6 @@ if (!monoModule) {
     })
 }
 
-if (!monoModule) throw new Error('Cant find mono!')
+if (!monoModule) throw new Error('Can\'t find Mono runtime!')
 
 export default monoModule

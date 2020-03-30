@@ -71,7 +71,7 @@ const MonoApiHelper = {
         const result = MonoApi.mono_runtime_invoke(mono_method, instance, args, exception)
 
         if (!exception.isNull()) {
-            throw new Error('Unknown exception happened')
+            throw new Error('Unknown exception happened.')
         }
 
         return result
@@ -96,11 +96,22 @@ const MonoApiHelper = {
     ValueBox: (mono_class, valuePtr, domain = rootDomain) => MonoApi.mono_value_box(domain, mono_class, valuePtr)
 }
 
+function hookManagedMethod(klass, methodName, callbacks) {
+  if (!callbacks) throw new Error('callbacks must be an object!');
+  if (!callbacks.onEnter && !callbacks.onLeave) throw new Error('At least one callback is required!');
+
+  let md = MonoApiHelper.ClassGetMethodFromName(klass, methodName);
+  if (!md) throw new Error('Method not found!');
+  let impl = MonoApi.mono_compile_method(md)
+
+  Interceptor.attach(impl, {...callbacks});
+}
+
 function resolveClassName(className) {
-    return {
-        className: className.substring(className.lastIndexOf('.')+1),
-        namespace: className.substring(0, className.lastIndexOf('.'))
-    }
+  return {
+    className: className.substring(className.lastIndexOf('.')+1),
+    namespace: className.substring(0, className.lastIndexOf('.'))
+  }
 }
 
 export default MonoApiHelper
