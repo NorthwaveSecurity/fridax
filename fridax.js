@@ -1,4 +1,4 @@
-#!node
+#!/usr/bin/env node
 
 /**
  * You should not change this file.
