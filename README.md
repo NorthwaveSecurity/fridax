@@ -72,7 +72,7 @@ Examples:
 
 Example scripts can be found in `./examples`. Place an example script in the `./scripts` folder to try it out. Using the example scripts, all of the variables/functions in the example class below can be read/intercepted.
 
-```javascript
+```csharp
 namespace CompanyName.ProjectName {
 
     class Settings {
