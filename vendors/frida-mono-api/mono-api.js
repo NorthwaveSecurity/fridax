@@ -785,8 +785,7 @@ let MonoApi = {
     unity_mono_method_is_generic: null,
     unity_mono_method_is_inflated: null,
     unity_mono_redirect_output: null,
-    unity_mono_reflection_method_get_method: null,
-    mono_aot_get_method: ['pointer', ['pointer', 'pointer', 'pointer']]
+    unity_mono_reflection_method_get_method: null
 }
 
 Object.keys(MonoApi).map(exportName => {
