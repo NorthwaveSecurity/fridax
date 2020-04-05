@@ -59,6 +59,7 @@ const MonoApiHelper = {
     GetStringClass: MonoApi.mono_get_string_class,
     GetUInt32Class: MonoApi.mono_get_uint32_class,
     ImageLoaded: name => MonoApi.mono_image_loaded(Memory.allocUtf8String(name)),
+    Intercept: hookManagedMethod,
     MethodGetFlags: (mono_method, iflags = 0) => MonoApi.mono_method_get_flags(mono_method, iflags),
     MethodGetName: mono_method => Memory.readUtf8String(MonoApi.mono_method_get_name(mono_method)),
     MethodSignature: MonoApi.mono_method_signature,
