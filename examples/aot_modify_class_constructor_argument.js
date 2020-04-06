@@ -2,6 +2,7 @@ import { MonoApiHelper, MonoApi } from '../vendors/frida-mono-api'
 import ClassHelper from '../libraries/class_helper'
 
 /* 
+    // For AOT-compiled applications only.
     // This example script can intercept the following method (constructor).
     // Furthermore it modifies the third argument (string c).
 
