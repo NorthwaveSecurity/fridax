@@ -42,13 +42,13 @@ let nativeMethodPointer = MonoApi.mono_aot_get_method(domain, methodInformation,
 Interceptor.attach(nativeMethodPointer, {
     onEnter: function(args) {
         console.log("Entered " + settingMethodName + " with " + settingMethodArgCount + " argument(s).");
-        console.log("Value of `string id`: " + MonoApiHelper.StringToUtf8(args[3]));
+        console.log("Value of `string id`: " + MonoApiHelper.StringToUtf8(args[1]));
 
-        args[3] = MonoApiHelper.StringNew('This is the replaced value of `string c`.', domain);
+        args[1] = MonoApiHelper.StringNew('This is the replaced value of `string c`.', domain);
     },
     onLeave: function onLeave(log, retval, state) {
         console.log("Left " + settingMethodName + ".");
     }
 })
 
-console.log(`'modify_function_argument.js' attached and ready.`)
+console.log(`'aot_modify_class_function_argument.js' attached and ready.`)
