@@ -15,7 +15,7 @@
     •
     <a href="#license">License</a>
     <br/>
-    <sub>Built with ❤ by the <a href="https://twitter.com/northwave_sec">Northwave</a> Red Team</sub>
+    <sub>Built with ❤ by the <a href="https://twitter.com/NorthwaveLabs">Northwave</a> Red Team</sub>
     <br/>
 </p>
 <hr>
