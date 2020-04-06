@@ -51,4 +51,4 @@ Interceptor.attach(nativeMethodPointer, {
     }
 })
 
-console.log(`'modify_constructor_argument.js' attached and ready.`)
+console.log(`'aot_modify_class_constructor_argument.js' attached and ready.`)
