@@ -2,8 +2,9 @@ import { MonoApiHelper, MonoApi } from '../vendors/frida-mono-api'
 import ClassHelper from '../libraries/class_helper'
 
 /* 
+    // For AOT-compiled applications only.
     // This example script can intercept the following method (constructor).
-    // Furthermore it modifies the third argument (string c).
+    // Furthermore it modifies the first argument (string id).
 
     namespace CompanyName.ProjectName.Views.Web.Html {
 
@@ -44,7 +45,7 @@ Interceptor.attach(nativeMethodPointer, {
         console.log("Entered " + settingMethodName + " with " + settingMethodArgCount + " argument(s).");
         console.log("Value of `string id`: " + MonoApiHelper.StringToUtf8(args[1]));
 
-        args[1] = MonoApiHelper.StringNew('This is the replaced value of `string c`.', domain);
+        args[1] = MonoApiHelper.StringNew('This is the replaced value of `string id`.', domain);
     },
     onLeave: function onLeave(log, retval, state) {
         console.log("Left " + settingMethodName + ".");
