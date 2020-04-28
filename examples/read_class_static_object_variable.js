@@ -1,5 +1,5 @@
-import { MonoApiHelper, MonoApi } from '../vendors/frida-mono-api'
-import ClassHelper from '../libraries/class_helper'
+import { MonoApiHelper, MonoApi } from 'frida-mono-api'
+import ClassHelper from 'libraries/class_helper'
 
 /* 
     // This example script can read the static ObfuscatedString variable `secret`.

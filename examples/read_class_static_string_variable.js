@@ -1,27 +1,32 @@
-import { MonoApiHelper, MonoApi } from '../vendors/frida-mono-api'
-import ClassHelper from '../libraries/class_helper'
+/**
+ * Class static variable reader.
+ *
+ * @author          Tijme Gommers (@tijme)
+ * @copyright       Northwave B.V. (www.northwave-security.com)
+ * @description     This example script will allow you to read the `secret` variable of the class below.
+ * 
+ *    namespace CompanyName.ProjectName {
+ *
+ *        class Settings {
+ *
+ *            public static string secret = "very secret";
+ *
+ *        }
+ *
+ *    }
+ * 
+ */
 
-/* 
-    // This example script can read the static string variable `secret`.
+import FridaxClass from 'libraries/fridax_class'
 
-    namespace CompanyName.ProjectName {
+// Log that the module was loaded succesfully
+console.log(`[*] Loaded ${require('path').basename(__filename)}.`)
 
-        class Settings {
+// Construct a Fridax FridaxClass for the given `CompanyName.ProjectName.Settings` class.
+const settings = new FridaxClass('CompanyName.ProjectName.Settings')
 
-            public static readonly string secret = "SecretValue";
+// Read the secret variable
+const secret = settings.getStaticField('secret').toString()
 
-        }
-
-    }
-*/
-
-// Get a reference to the secret string
-let settingsClass = ClassHelper.getClassByName("CompanyName.ProjectName.Settings")
-let secretField = MonoApiHelper.ClassGetFieldFromName(settingsClass, "secretString")
-let secretValue = MonoApiHelper.FieldGetValueObject(secretField, settingsClass)
-
-// Convert value to an UTF8 string
-var result = MonoApiHelper.StringToUtf8(secretValue)
-
-// Print result
-console.log('secret:', typeof(result), result)
+// Log the secret variable
+console.log('secret:', secret)

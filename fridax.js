@@ -7,6 +7,7 @@
 
 // Dependencies
 const fs = require(`fs`)
+const path = require('path')
 const chalk = require(`chalk`)
 const inquirer = require(`inquirer`)
 const storage = require(`node-persist`)
@@ -103,7 +104,8 @@ async function injectApplicationOnDevice(device, application) {
 
     var scripts = [`console.log('[*] Injected a test script (this runs from within the injected application)!')`]
     for (index in argv[`scripts`]) {
-        var file = __dirname + `/${argv[`scripts`][index]}`
+        var file = path.resolve(process.cwd(), argv[`scripts`][index]);
+
         if (fs.existsSync(file)) {
             scripts.push(file)
         } else {

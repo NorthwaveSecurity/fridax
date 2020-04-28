@@ -1,12 +1,9 @@
 import { MonoApiHelper, MonoApi } from 'frida-mono-api'
 
 /**
- * DEPRECATED, please use MonoClass and MonoClassHelper from now on.
- * This class will be removed in a future release.
- * 
  * Class containing helper functions for Mono classes
  */
-export default class ClassHelper {
+export default class FridaxClassHelper {
 
     /**
      * Retrieve a Mono class by the given name
@@ -14,12 +11,12 @@ export default class ClassHelper {
      * @param {string} The name of the class (e.g. `CompanyName.ProjectName.Views.Web.Html.HtmlWebView`)
      * @returns {object} The Mono class representing the given class name
      */
-    static getClassByName(class_name) {
+    static getClassByName(className) {
         var result = null
 
         MonoApiHelper.AssemblyForeach(function(assembly) {
             var image = MonoApi.mono_assembly_get_image(assembly)
-            var pointer = MonoApiHelper.ClassFromName(image, class_name)
+            var pointer = MonoApiHelper.ClassFromName(image, className)
             
             if (pointer != 0) {
                 result = pointer

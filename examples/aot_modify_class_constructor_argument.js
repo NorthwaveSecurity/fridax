@@ -1,5 +1,5 @@
-import { MonoApiHelper, MonoApi } from '../vendors/frida-mono-api'
-import ClassHelper from '../libraries/class_helper'
+import { MonoApiHelper, MonoApi } from 'frida-mono-api'
+import ClassHelper from 'libraries/class_helper'
 
 /* 
     // For AOT-compiled applications only.
@@ -52,4 +52,5 @@ Interceptor.attach(nativeMethodPointer, {
     }
 })
 
-console.log(`'aot_modify_class_constructor_argument.js' attached and ready.`)
+// Log that the module was loaded succesfully
+console.log(`[*] Loaded ${require('path').basename(__filename)}.`)

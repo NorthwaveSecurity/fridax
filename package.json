@@ -6,17 +6,20 @@
     "type": "git",
     "url": "https://github.com/NorthwaveNL/fridax.git"
   },
-  "main": "hack.js",
+  "main": "libraries/index.js",
+  "bin": {
+    "fridax": "./fridax.js"
+  },
   "dependencies": {
     "chalk": "^3.0.0",
     "console-stamp": "^0.2.9",
     "frida-ex-nativefunction": "^0.1.2",
-    "frida-inject": "^0.3.0",
+    "frida-inject": "github:NorthwaveNL/forked-frida-inject",
+    "frida-mono-api": "github:NorthwaveNL/forked-frida-mono-api",
     "inquirer": "^7.1.0",
     "node-persist": "^3.0.5",
     "yargs": "^15.3.1"
   },
-  "devDependencies": {},
   "author": "Tijme Gommers",
   "license": "MIT"
 }
