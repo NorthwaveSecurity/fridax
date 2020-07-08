@@ -124,6 +124,7 @@ Issues or new features can be reported via the [GitHub issue tracker](https://gi
 
 * Xamarin app needs to be running before you start this script (see [this issue](https://github.com/freehuntx/frida-mono-api/issues/4) for more information).
 * You get the error `Export not found: mono_aot_get_method`. This is due to your application being JIT-compiled. Please use the example scripts that are prefixed with `jit_` instead of `aot_` (AOT-compiled). See [issue #3](https://github.com/NorthwaveNL/fridax/issues/3) for more information.
+* Fridax does not work if the native debugging symbols are stripped from the target binary.
 
 ## License
 
