@@ -5,7 +5,7 @@ let monoModule = null;
 
 // Look for a known runtime module.
 for (let x in KNOWN_RUNTIMES) {
-    let foundModule = Process.findModuleByName(x);
+    let foundModule = Process.findModuleByName(KNOWN_RUNTIMES[x]);
     if (foundModule) {
         monoModule = foundModule;
         break;
